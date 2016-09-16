@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:c="http://www.springframework.org/schema/c"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="cdplayer" class="com.spring.basics.core.CDPlayer">
+		<property name="artistInfo" ref="artistinfo"></property>
+	</bean>
+	<bean id="artistinfo" class="com.spring.basics.core.ArtistInfo">
+		<constructor-arg>
+			<list>
+				<ref bean="yrmcd"/>
+				<ref bean="tseriescd"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="yrmcd" class="com.spring.basics.core.YRMCD"></bean>
+	<bean id="tseriescd" class="com.spring.basics.core.TSeriesCD"></bean>
+</beans>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:util="http://www.springframework.org/schema/util"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+		
+	<bean id="collection" class="com.spring.utilDI.CollectionDI">
+		<constructor-arg>
+			<util:list value-type="java.util.Vector">
+				<ref bean="f1"/>
+				<ref bean="f2"/>
+				<ref bean="f3"/>
+			</util:list>
+		</constructor-arg>
+		<property name="cricketers">
+			<util:set value-type="java.util.HashSet">
+				<ref bean="c1"/>
+				<ref bean="c2"/>
+				<ref bean="c3"/>
+			</util:set>
+		</property>
+		<property name="countryCapMap">
+			<util:map value-type="java.lang.String" key-type="java.lang.String">
+				<entry key="India" value="Delhi"></entry>
+				<entry key="Pakistan" value="Islamabad"></entry>
+				<entry key="Australia" value="Sydney"></entry>
+			</util:map>
+		</property>
+	</bean>
+	
+	<bean id="f1" class="com.spring.utilDI.Fruit">
+		<constructor-arg value="Orange" index="0" name="name"/>
+		<constructor-arg value="10" index="2" name="quantity"/>
+		<constructor-arg value="Orange" index="1" name="color"/>
+	</bean>
+	<bean id="f2" class="com.spring.utilDI.Fruit">
+		<constructor-arg value="Banana" index="0" name="name"/>
+		<constructor-arg value="12" index="2" name="quantity"/>
+		<constructor-arg value="Yellow" index="1" name="color"/>
+	</bean>
+	<bean id="f3" class="com.spring.utilDI.Fruit">
+		<constructor-arg value="Apple" index="0" name="name"/>
+		<constructor-arg value="5" index="2" name="quantity"/>
+		<constructor-arg value="Red" index="1" name="color"/>
+	</bean>
+	
+	<bean id="c1" class="com.spring.utilDI.Cricketer">
+		<property name="name" value="Sachin Tendulkar"/>
+	</bean>
+	<bean id="c2" class="com.spring.utilDI.Cricketer">
+		<property name="name" value="Virat Kohli"/>
+	</bean>
+	<bean id="c3" class="com.spring.utilDI.Cricketer">
+		<property name="name" value="Yuvraj Singh"/>
+	</bean>
+</beans>
